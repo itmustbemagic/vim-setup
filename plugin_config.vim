@@ -226,3 +226,6 @@ let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_javascript_eslint_exe = 'yarn add lint --'
 let g:tsuquyomi_disable_quickfix = 1
 let g:syntastic_typescript_checkers = ['tsuquyomi']
+
+" Tsuquyomi
+let g:tsuquyomi_shortest_import_path = 1
