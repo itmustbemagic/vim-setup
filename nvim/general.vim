@@ -3,9 +3,8 @@ filetype off
 
 filetype plugin indent on    " required
 runtime macros/matchit.vim
-
 syntax on
-"set omnifunc=syntaxcomplete#Complete
+set omnifunc=syntaxcomplete#Complete
 if (has("nvim"))
   "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
@@ -20,6 +19,7 @@ set noswapfile     "no swap files
 set t_8b=^[[48;2;%lu;%lu;%lum
 set t_8f=^[[38;2;%lu;%lu;%lum
 set smartcase
+set clipboard=unnamedplus
 " #TEMPLATES {{{
 " Prefill new files created by vim with contents from the following templates
 augroup templates
@@ -40,7 +40,7 @@ augroup END
 let g:vim_json_syntax_conceal = 0
 
 " Enable JSX syntax highlighting in .js files
-let g:jsx_ext_required = 0
+let g:jsx_ext_required = 1
 
  :augroup numbertoggle
  :  autocmd!
@@ -48,7 +48,7 @@ let g:jsx_ext_required = 0
 :  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 :augroup END
 
-
+autocmd VimLeave * !rm *:p
 " More natural split opening.
 set splitbelow
 set splitright
@@ -124,6 +124,5 @@ autocmd BufWritePre * %s/\s\+$//e
 autocmd CompleteDone * pclose
 
 au BufRead,BufNewFile,BufReadPost *.json set syntax=json
-
 " Rainbow.vim
  let g:rainbow_active = 1

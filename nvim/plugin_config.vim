@@ -147,30 +147,30 @@ let g:conoline_use_colorscheme_default_insert=1
 " }}}
 
 " #VIM GO {{{
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_types = 1
-
-" Automatically import packages on save
-let g:go_fmt_command = "goimports"
-
-" Prevent errors from opening the location list
-let g:go_fmt_fail_silently = 1
-
-" Search and easily navigate between the function and type definitions within
-" the package
-au FileType go nmap <leader>d :GoDeclsDir<cr>
-
-" Go to definition
-au FileType go nmap <F5> <Plug>(go-def)
-
-" Go Fmt
-au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
+" let g:go_highlight_build_constraints = 1
+" let g:go_highlight_extra_types = 1
+" let g:go_highlight_fields = 1
+" let g:go_highlight_functions = 1
+" let g:go_highlight_methods = 1
+" let g:go_highlight_operators = 1
+" let g:go_highlight_structs = 1
+" let g:go_highlight_types = 1
+"
+" " Automatically import packages on save
+" let g:go_fmt_command = "goimports"
+"
+" " Prevent errors from opening the location list
+" let g:go_fmt_fail_silently = 1
+"
+" " Search and easily navigate between the function and type definitions within
+" " the package
+" au FileType go nmap <leader>d :GoDeclsDir<cr>
+"
+" " Go to definition
+" au FileType go nmap <F5> <Plug>(go-def)
+"
+" " Go Fmt
+" au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
 " }}}
 
 " #GUTENTAGS {{{
@@ -226,6 +226,3 @@ let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_javascript_eslint_exe = 'yarn add lint --'
 let g:tsuquyomi_disable_quickfix = 1
 let g:syntastic_typescript_checkers = ['tsuquyomi']
-
-" Tsuquyomi
-let g:tsuquyomi_shortest_import_path = 1

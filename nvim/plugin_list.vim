@@ -1,6 +1,9 @@
 " #PLUGINS {{{
 call plug#begin('~/.local/share/nvim/plugged')
 
+" Auto import
+Plug 'Galooshi/vim-import-js'
+
 " Linting and Code Formatting
 Plug 'w0rp/ale'
 
@@ -17,17 +20,17 @@ Plug 'Quramy/vim-js-pretty-template'
 Plug 'jason0x43/vim-js-indent'
 
 " Go
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
-Plug 'universal-ctags/ctags'
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-let g:deoplete#enable_at_startup = 1
+"  Plug 'universal-ctags/ctags'
+"  if has('nvim')
+"    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"  else
+"    Plug 'Shougo/deoplete.nvim'
+"    Plug 'roxma/nvim-yarp'
+"    Plug 'roxma/vim-hug-neovim-rpc'
+"  endif
+"  let g:deoplete#enable_at_startup = 1
 
 " Git
 Plug 'tpope/vim-fugitive'

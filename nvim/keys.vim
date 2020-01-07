@@ -1,12 +1,6 @@
 " Change leader key from \ to ,
 let mapleader = ","
 
-" Disable F1 bringing up the help doc every time
-"autocmd FileType netrw setlocal bufhidden=delete
-"inoremap <F1> <ESC>
-"nnoremap <F1> <ESC>
-"vnoremap <F1> <ESC>
-
 nmap <silent> <leader>dd <Plug>(coc-definition)
 nmap <silent> <leader>dr <Plug>(coc-references)
 nmap <silent> <leader>dj <Plug>(coc-implementation)
@@ -37,7 +31,7 @@ nnoremap <silent> <leader>cp :cprev<CR>
 
 " console for linting error under cursor with ale
 nnoremap <leader>le :ALEDetail<CR>
-
+nnoremap <leader>im :ImportJSFix<CR>
 " Search for pattern
 " nnoremap <leader>g :Rg<CR>
 
