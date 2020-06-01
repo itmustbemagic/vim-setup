@@ -1,0 +1,6 @@
+{
+  "suggest.echodocSupport": true,
+  "suggest.maxCompleteItemCount": 10,
+  "coc.preferences.formatOnSaveFiletypes": ["javascript", "typescript", "typescriptreact", "json", "javascriptreact"],
+  "diagnostic.displayByAle": true,
+}
