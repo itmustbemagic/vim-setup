@@ -1,0 +1,5 @@
+{
+  "suggest.echodocSupport": true,
+  "suggest.maxCompleteItemCount": 10,
+  "diagnostic.displayByAle": true
+}

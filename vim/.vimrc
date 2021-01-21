@@ -7,49 +7,28 @@ endif
 
 " Plugin list
 call plug#begin('~/.vim/plugged')
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': { -> coc#util#install()}}
 Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'pangloss/vim-javascript'    " JavaScript support
+Plug 'leafgarland/typescript-vim', {'for': ['typescript', 'typescript.tsx']} " TypeScript syntax
+Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
+Plug 'jparise/vim-graphql'        " GraphQL syntax
 Plug 'gruvbox-community/gruvbox'
 Plug 'itchyny/lightline.vim'
 Plug 'jamestthompson3/vim-jest'
-Plug 'w0rp/ale'
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
-  \ 'branch': 'release/1.x',
-  \ 'for': [
-    \ 'javascript',
-    \ 'typescript',
-    \ 'css',
-    \ 'less',
-    \ 'scss',
-    \ 'json',
-    \ 'graphql',
-    \ 'markdown',
-    \ 'vue',
-    \ 'lua',
-    \ 'php',
-    \ 'python',
-    \ 'html',
-    \ 'swift' ] }
-Plug 'ludovicchabant/vim-gutentags'
-Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-rooter'
 Plug 'moll/vim-bbye'
 Plug 'miyakogi/conoline.vim'
-Plug 'tpope/vim-obsession'
-Plug 'luochen1990/rainbow'
+Plug 'w0rp/ale'
 call plug#end()
 
 " General Settings
 syntax on
 filetype plugin indent on
 
-if (has("termguicolors"))
-  set termguicolors
-endif
+set termguicolors
 set nobackup
 set nowritebackup
 set noswapfile
@@ -170,43 +149,19 @@ nnoremap <leader>q :Bwipeout<CR>
 " Create file under cursor
 :map <leader>gf :e <cfile><cr>
 
-" GRUVBOX
-set background=dark
-let g:gruvbox_sign_column = 'bg0'
-let g:gruvbox_contrast_dark = 'hard'
-let g:gruvbox_italic = 1
-let g:gruvbox_invert_selection = 0
-let g:gruvbox_plugin_hi_groups = 1
-colorscheme gruvbox
-set laststatus=2
-" Lightline
-  set t_Co=256
-" Integrate Coc with Lightline
-function! CocCurrentFunction()
-    return get(b:, 'coc_current_function', '')
-endfunction
-
-let g:lightline = {
-      \ 'colorscheme': 'gruvbox',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'cocstatus': 'coc#status',
-      \   'currentfunction': 'CocCurrentFunction'
-      \ },
-      \ }
-
 " ALE
 let g:ale_fixers = {'javascript': ['prettier', 'eslint']}
-let g:ale_linters = {'javascript': ['eslint']}
 let g:ale_fixers['typescript'] = ['prettier', 'tslint']
 let g:ale_fixers['typescriptreact'] = ['prettier', 'tslint']
-let g:ale_linters['typescript'] = ['tslint']
-let g:ale_linters['typescriptreact'] = ['tslint']
+let g:ale_fixers['typescript.tsx'] = ['prettier', 'tslint']
 let g:ale_fixers['json'] = ['prettier']
 let g:ale_fixers['php'] = ['prettier']
+let g:ale_fixers['css'] = ['prettier']
+let g:ale_fixers['html'] = ['prettier']
+let g:ale_linters = {'javascript': ['eslint']}
+let g:ale_linters['typescript'] = ['tslint', 'eslint']
+let g:ale_linters['typescriptreact'] = ['tslint', 'eslint']
+let g:ale_linters['typescript.tsx'] = ['tslint', 'eslint']
 let g:ale_linters['php'] = ['phpcs', 'phpstan']
 let g:ale_fix_on_save = 1 " Fix files automatically on save
 let g:ale_pattern_options = {
@@ -228,9 +183,36 @@ nmap <silent> ]c <Plug>(ale_next_wrap)
 
 nmap <F6> <Plug>(ale_fix)
 
-" GUTENTAGS
-let g:gutentags_file_list_command = "rg --files --follow --ignore-file '/home/kevin/.vimignore'"
-let g:gutentags_ctags_tagfile = "/home/kevin/tmp"
-if !executable('ctags')
-    let g:gutentags_dont_load = 1
-endif
+
+" GRUVBOX
+set background=dark
+let g:gruvbox_sign_column = 'bg0'
+let g:gruvbox_contrast_dark = 'hard'
+let g:gruvbox_italic = 1
+let g:gruvbox_invert_selection = 0
+let g:gruvbox_plugin_hi_groups = 1
+let g:gruvbox_italicize_strings = 1
+colorscheme gruvbox
+
+set laststatus=2
+" Lightline
+set t_Co=256
+
+" Integrate Coc with Lightline
+function! CocCurrentFunction()
+    return get(b:, 'coc_current_function', '')
+endfunction
+
+let g:lightline = {
+      \ 'colorscheme': 'gruvbox',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'cocstatus': 'coc#status',
+      \   'currentfunction': 'CocCurrentFunction'
+      \ },
+      \ }
+
+set backspace=indent,eol,start
